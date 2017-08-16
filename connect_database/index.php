@@ -31,7 +31,11 @@ $users = $conn->query_db("SELECT * FROM `users`;");
 
         <tr>
             <td><?php echo $user['id'] ?></td>
-            <td><?php echo $user['name'] ?></td>
+            <td>
+                <a href="../save_row/?id=<?php echo $user['id'] ?>">
+                    <?php echo $user['name'] ?>
+                </a>
+            </td>
             <td><?php echo $user['username'] ?></td>
             <td><?php echo $user['email'] ?></td>
             <td><?php echo $user['password'] ?></td>
@@ -39,13 +43,13 @@ $users = $conn->query_db("SELECT * FROM `users`;");
     <?php endforeach ?>
     </tbody>
 </table>
+<br /><br />
+<a href="/save_row/">[Create new]</a>
 
 <?php
 echo "<pre>";
 print_r($users);
 echo "</pre>";
-
-
 
 $conn->close_connection();
 ?>
