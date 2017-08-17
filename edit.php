@@ -1,8 +1,8 @@
 <?php
 
-require_once('vendor/autoload.php');
+require_once('save_row/vendor/autoload.php');
 
-require_once('../connect_database/connect_database.php');
+require_once('connect_database/connect_database.php');
 
 use Symfony\Component\HttpFoundation\Request;
 
@@ -17,7 +17,8 @@ $creds = array(
 
 $conn = new connect_database($creds);
 
-$user = array( 'id' => '', 'name' => '', 'username' => '', 'email' => '', 'password' =>'');
+$user = array(
+        'id' => '', 'name' => '', 'username' => '', 'email' => '', 'password' =>'');
 
 $id = (int) $request->query->filter('id', '', FILTER_SANITIZE_NUMBER_INT);
 $action = (string) $request->request->filter('action', '');
@@ -48,7 +49,7 @@ if ($id){
         <tr>
             <td colspan="2">
                 <input type="submit" value="Submit" />
-                <a href="../connect_database/index.php">[ Cancel ]
+                <a href="connect_database/index.php">[ Cancel ]
             </td>
         </tr>
         <input type="hidden" name="action" id="action" value="post" />

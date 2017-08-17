@@ -1,9 +1,7 @@
 <?php
 
-require_once('connect_database.php');
-/**
- * Way to connect to the database and bring back an array of users for example
- */
+require_once('connect_database/connect_database.php');
+
 $creds = array(
     'host' => 'localhost',
     'user' => 'root',
@@ -18,13 +16,13 @@ $users = $conn->query_db("SELECT * FROM `users`;");
 
 <table>
     <thead>
-        <tr>
-            <th>id</th>
-            <th>name</th>
-            <th>username</th>
-            <th>email</th>
-            <th>password</th>
-        </tr>
+    <tr>
+        <th>id</th>
+        <th>name</th>
+        <th>username</th>
+        <th>email</th>
+        <th>password</th>
+    </tr>
     </thead>
     <tbody>
     <?php foreach($users as $user): ?>
