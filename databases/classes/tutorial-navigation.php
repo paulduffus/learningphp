@@ -8,7 +8,7 @@
                 <li><a href="/">Home</a></li>
                 <li><a href="#">PHP</a></li>
                 <li><a href="/databases">Databases</a></li>
-                <li class="active"><a href="/databases/classes">Connect to a database</a></li>
+                <li class="active"><a href="/databases/classes">Classes</a></li>
             </ul>
         </div>
     </div>

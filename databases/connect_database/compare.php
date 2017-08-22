@@ -2,7 +2,6 @@
 
 require_once('../../assets/html/header.php');
 
-require_once('connect_database.php');
 ?>
 
 <link type="text/css" rel="stylesheet" href="../../../assets/css/codemirror.css" />
@@ -52,18 +51,14 @@ $html2 = file_get_contents('DIY/index.php');
 
 <div id="xcompare-1" class="hidden">
     <pre>
-        <code>
-                <?php echo $html ?>
-        </code>
+        <code><?php echo $html ?></code>
     </pre>
 
 </div>
 
 <div id="xcompare-2" class="hidden">
     <pre>
-        <code>
-                <?php echo $html2 ?>
-        </code>
+        <code><?php echo $html2 ?></code>
     </pre>
 
 </div>

@@ -38,74 +38,19 @@ require_once('../../assets/html/header.php'); ?>
                     <!-- Tab panes -->
                     <div class="tab-content">
                         <div role="tabpanel" class="tab-pane active" id="home">
-                            <img src="/databases/connect_database/images/example-db.png" class="img img-responsive"
-                                 alt="View of database" title="View of database"/>
-
-                            <h1>Connecting to a database and bringing back records</h1>
-                            <p>PHP and databases are the cornerstone of CMS development used by all the major players in
-                                the field:</p>
-                            <ul>
-                                <li><a href="https://www.joomla.org/">Joomla</a></li>
-                                <li><a href="https://en-gb.wordpress.org/">Wordpress</a></li>
-                                <li><a href="https://www.drupal.org/">Drupal</a></li>
-                            </ul>
-                            <p>PHP and databases are crucial for many electronic online shops</p>
-                            <h2>Databases store information</h2>
-                            <p>Databases is where user input or business data is stored... If you wanted to buy a
-                                product from Amazon:<br/>
-                                <a href="https://www.amazon.co.uk/Best-Sellers-Office-Products-Barcode-Scanners/zgbs/officeproduct/13017221">https://www.amazon.co.uk/Best-Sellers-Office-Products-Barcode-Scanners/zgbs/officeproduct/13017221</a>
-                            </p>
-                            <p>
-                                Firstly all the information and products that relate to the category of 'Barcode
-                                scanner' are stored in the database.
-                                PHP connects to the database and brings back all the records related to this category.
-                                The raw data from the database is then transformed by
-                                PHP and HTML and the user interface is displayed the user
-                            </p>
-                            <p>Once a user has selected the product they are interested in, they next have to provide
-                                information about themselves:</p>
-                            <ul>
-                                <li>Name</li>
-                                <li>Address</li>
-                                <li>Telephone number</li>
-                                <li>Delivery time and address</li>
-                                <li>Credit card information</li>
-                            </ul>
-                            <p>
-                                This data can then be stored in the database, to be used by the various departments in
-                                the organisation.
-                            </p>
-                            <h3>This tutorial...</h3>
-                            <p>Deals exclusively with:</p>
-                            <ul>
-                                <li>Using php to connect to the database</li>
-                                <li>Once a connection is established, Sequel (SQL) the database language is used to
-                                    retreive records
-                                </li>
-                                <li>The raw data from the database is then combined with html in order to present the
-                                    user with a list of choices from the database
-                                </li>
-                            </ul>
-                            <h3>Follow on tutorial...</h3>
-                            <p>Our tutorial on Saving information to a database, then deals with storing user
-                                information back to the database... in our Amazon example this would be
-                                where the user has provided personal contact information through the site</p>
-                        </div>
-                        <div role="tabpanel" class="tab-pane" id="code">
-                            <h3>Using php to connect to the database</h3>
-                            <p>In order to connect to your database you are going to need credentials.
-                                Where the database is hosted or `host`, the username for the database `user`, the
-                                password `password`
-                                and the name of the database you'd like to connect to `database`.
-                            </p>
-                            <p>We create an array to contain this information, so it can easily be accessed many times
-                                if required.</p>
-                            <p>Then we pass this information over to the database in order to create a connection via
-                                <code data-language="php">`mysql_connect()`</code></p>
-
+                            <img src="images/classes-containers.jpg" class="img img-responsive"
+                                 alt="Introduction to classes" title="Introduction to classes"/>
+                            <h1>Introduction to classes</h1>
+                            <p>In our tutorial <a href="/databases/connect_database">connect to a database</a> we successfully
+                            created a connection to the database and returned an array of users from the table.</p>
+                            <p>In the next tutorial we will be developing a way of saving user details to the database. And the first step towards saving
+                            information to the database, is to first retrieve the user record you'd wish to edit.</p>
+                            <p>This means that the code we use to connect to the database would be used in two or more files:</p>
                             <pre>
                                 <code data-language="php">
-//create an array of connection details
+/**
+ * Way to connect to the database and bring back an array of users for example
+ */
 $creds = array(
     'host' => 'localhost',
     'user' => 'root',
@@ -113,82 +58,112 @@ $creds = array(
     'db' => 'sites_php'
 );
 
-//pass the credentials to the database in order to connect
-//further we create a variable called $conn
+//create a connection to the database based on credentials and assign to a variable called $conn
 $conn = mysqli_connect($creds['host'], $creds['user'], $creds['password'], $creds['db']);
+
                                 </code>
                             </pre>
-                            <p>We further define <code data-language="php">$conn</code> as this connection so we can use
-                                this later on.</p>
-                            <h3>Once a connection is established, Sequel (SQL) the database language is used to retreive
-                                records</h3>
-                            <p>Our sql is defined as <code data-language="php">SELECT * FROM `users</code>... which
-                                translated means:</p>
+                            <p>A fundamental principle of web development is to keep your code D.R.Y. or put simply `Don't Repeat Yourself`. If you
+                            find yourself cut copying and pasting code in order to make a connection to the database you are doing something wrong.</p>
+                            <p>It would be far better if everything about interacting with a database was
+                            contained in one location. This way if you had to update your code, you'd only need to update the code
+                            in one place... as opposed to updating 50 files that connected to the database</p>
+                            <p>This is where PHP Classes come into play. They allow you to create configurable code that can be used in many different places.</p>
+                            <h2>What are classes</h2>
+                            <p>Think of a class as a glass container. How would you describe the glass:</p>
                             <ul>
-                                <li><code data-language="php">SELECT *</code> == Bring back all records</li>
-                                <li><code data-language="php">FROM `user</code> From the users table</li>
+                                <li>By the type of liquid it contained... water vs tea</li>
+                                <li>By the colour of the liquid... red or green</li>
+                                <li>Whether the glass was half empty or half full</li>
+                                <li>Whether the glass had a crack or not</li>
                             </ul>
-                            <p>SELECT SQL statements are also capable of accepting a condition <code data-language="php">WHERE `id` = 1</code>. If this was appended
-                                to the end of the SQL statement it would transform the statement to 'Bring back all user
-                                details related to the first record</p>
+                            <p>All of the bullet lists above would be described as the <strong>class properties</strong>... configurable things that describe what the class is like.</p>
+                            <p><strong>Class methods</strong> are small chunks of reusable code that they take the class properties and can transform them into other things</p>
+                        </div>
+                        <div role="tabpanel" class="tab-pane" id="code">
+                            <h3>Our re-usable database class</h3>
+                            <p>So in this tutorial we want to create a class or php file called <code>connect_database.php</code> that allows us to:</p>
+                            <ul>
+                                <li>Define connection details to the database <strong>(class property)</strong></li>
+                                <li>Use these credentials in order to create the connection <strong>(__construct method)</strong></li>
+                                <li>A way to set the SQL query to bring back records from the database <strong>(method)</strong></li>
+                                <li>Bring or fetch rows from the database <strong>(method)</strong></li>
+                                <li>When requested the database connection should be closed <strong>(method)</strong></li>
+                            </ul>
+                            <p>Defining a class is as simple as:</p>
                             <pre>
                                 <code data-language="php">
-//with our database connection we use SQL to bring back all users
-$result = $conn->query("SELECT * FROM `users`;");
+class connect_database {
 
-//create an empty array to be populated later
-$users = array();
+    /**
+     * define your class properties here
+     */
+    public $creds = array();
 
-//loop through each of the records brought back
-while($row = $result->fetch_assoc()) {
-    //populate our user array the the information ($row)
-    $users[] = $row;
-//close our loop here
+    public $conn;
+
+    /**
+     * end class properties
+     */
+                                    
+}                                </code>
+                            </pre>
+                            <p>Here we create a class called <code>connect_database</code> and we provide the class properties via <code>public $creds</code> or <code>public $conn</code></p>
+                            <p>We already discussed that classes are defined by the properties you give it, however classes are also made up of methods.
+                            Methods are small self contained pieces (or functions) of code that enable to you do something or transform the class into something else.</p>
+                            <pre>
+                                <code data-language="php">
+class connect_database {
+    ...
+public function query($query)
+{
+    return $this->conn->query($query);
+}
+    ...
+                                </code>
+                            </pre>
+                            <p>In the above example we define the query function... it will take the string $query that we pass to it and then take
+                            the existing database connection and pass to it the SQL query.</p>
+                            <h2 id="instantiate">Instantiate a class</h2>
+                            <p>Once you have you class written... see <a href="example.php#using-your-class">example</a> you will need to instantiate or start to use it. This is
+                            as simple as:</p>
+                            <pre>
+                                <code data-language="php">
+$conn = new connect_database();
+                                </code>
+                            </pre>
+                            <p>So we start of by defining a variable <code data-language="php">$conn =</code> and we assign the class to this variable. Notice that we start the class by calling <code data-language="php">`new`</code> followed by the name of the class. <strong>Note:</strong> by starting the class we will immediately run the <code data-language="php">`__construct`</code> function or the class. The construct function is
+                            always the first method run for a class: </p>
+                            <pre>
+                                <code data-language="php">
+public function __construct($creds = array())
+{
+    $creds = array_merge($this->creds, $creds);
+
+    $this->conn = mysqli_connect($creds['host'], $creds['user'], $creds['password'], $creds['db']);
 }
                                 </code>
                             </pre>
-                            <p>So after we have queried (brought back the requested data from the database via <code data-language="php">$result = $conn->query("SELECT * FROM `users`;");</code>
-                                We create another blank array called users <code data-language="php"> $users = array();</code></p>
-                            <p>We then loop through all the records brought back from the database <code data-language="php">while($row = $result->fetch_assoc()) {</code>
-                                and we add each database row to the user's array <code data-language="php">$users[] = $row;</code></p>
-                            <p>Lastly we finish the loop by providing the closing parenthisis <code data-language="php">}</code></p>
-
-                            <h3>The raw data from the database is then combined with html in order to present the user
-                                with a list of choices from the database</h3>
-                            <p>So using our `$users` array that is populated with information from the database, we then
-                                loop through each user via <code data-language="php">&#x3C;?php foreach($users as $user): ?&#x3E;</code></p>
-                            <p>Then for each column of the table we output each piece of information about the user
-                                <code data-language="php"> &#x3C;?php echo $user[&#x27;name&#x27;] ?&#x3E;</code></p>
+                            <p>Which as you can see takes the class property <code data-language="php">`$this->conn`</code> and populates this variable with the connection made via <code data-language="php">`mysqli_connect`</code> so it can be resused elsewhere in the class</p>
+                            <h2>Calling methods</h2>
+                            <p>Calling methods is equally as simple, but it does depend on how you create your class... in our example however we can call a method by:</p>
                             <pre>
                                 <code data-language="php">
-//foreach user record we loop through
-&#x3C;?php foreach($users as $user): ?&#x3E;
-    &#x3C;tr&#x3E;
-        &#x3C;td&#x3E;&#x3C;?php echo $user[&#x27;id&#x27;] ?&#x3E;&#x3C;/td&#x3E;
-        &#x3C;td&#x3E;
-            //outputting the screen the appropriate user information
-            &#x3C;?php echo $user[&#x27;name&#x27;] ?&#x3E;
-        &#x3C;/td&#x3E;
-        &#x3C;td&#x3E;&#x3C;?php echo $user[&#x27;username&#x27;] ?&#x3E;&#x3C;/td&#x3E;
-        &#x3C;td&#x3E;&#x3C;?php echo $user[&#x27;email&#x27;] ?&#x3E;&#x3C;/td&#x3E;
-        &#x3C;td&#x3E;&#x3C;?php echo $user[&#x27;password&#x27;] ?&#x3E;&#x3C;/td&#x3E;
-    &#x3C;/tr&#x3E;
-&#x3C;?php endforeach ?&#x3E;
-&#x3C;/tbody&#x3E;
+$conn->query('SELECT * FROM `users`;');
                                 </code>
                             </pre>
+                            <p>You see that we take the <code data-language="php">`$conn`</code> variable created when we instantiated our class and provide the method <code data-language="php">`->query()`</code> with the sql we'd like to perform.</p>
                         </div>
                         <div role="tabpanel" class="tab-pane" id="further-reading">
                             <div class="margin-top">
                                 <p>Below are a selection of links to further reading</p>
                                 <ul>
-                                    <li><a href="https://www.w3schools.com/php/func_mysqli_connect.asp">https://www.w3schools.com/php/func_mysqli_connect.asp</a></li>
-                                    <li><a href="http://php.net/manual/en/function.mysqli-connect.php">http://php.net/manual/en/function.mysqli-connect.php</a></li>
-                                    <li><a href="https://www.w3schools.com/php/php_arrays.asp">https://www.w3schools.com/php/php_arrays.asp</a></li>
+                                    <li><a href="https://www.w3schools.com/php/php_datatypes.asp">W3schools - data types... scroll to php object</a></li>
+                                    <li><a href="http://www.php5-tutorial.com/classes/introduction/">http://www.php5-tutorial.com/classes/introduction/</a></li>
+                                    <li><a href="http://codular.com/introducing-php-classes">http://codular.com/introducing-php-classes</a></li>
                                 </ul>
                             </div>
                         </div>
-
                     </div>
                 </div>
             </div>
