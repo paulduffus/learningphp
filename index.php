@@ -1,52 +1,33 @@
-<?php
+<?php require_once('assets/html/header.php') ?>
 
-require_once('connect_database/connect_database.php');
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+            <?php require_once('assets/html/sidebar.php') ?>
+        </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+            <div class="table-responsive">
+                <fieldset>
+                    <legend>PHP</legend>
+                </fieldset>
 
-$creds = array(
-    'host' => 'localhost',
-    'user' => 'root',
-    'password' => 'root',
-    'db' => 'sites_php'
-);
+            </div>
+            <fieldset>
+                <legend>HTML</legend>
+            </fieldset>
+            <p>coming soon...</p>
 
-$conn = new connect_database($creds);
-$users = $conn->query_db("SELECT * FROM `users`;");
-?>
+            <fieldset>
+                <legend>CSS</legend>
+            </fieldset>
+            <p>coming soon...</p>
 
+            <fieldset>
+                <legend>Javascript</legend>
+            </fieldset>
+            <p>coming soon...</p>
+        </div>
+    </div>
+</div>
 
-<table>
-    <thead>
-    <tr>
-        <th>id</th>
-        <th>name</th>
-        <th>username</th>
-        <th>email</th>
-        <th>password</th>
-    </tr>
-    </thead>
-    <tbody>
-    <?php foreach($users as $user): ?>
-        <tr>
-            <td><?php echo $user['id'] ?></td>
-            <td>
-                <a href="../save_row/?id=<?php echo $user['id'] ?>">
-                    <?php echo $user['name'] ?>
-                </a>
-            </td>
-            <td><?php echo $user['username'] ?></td>
-            <td><?php echo $user['email'] ?></td>
-            <td><?php echo $user['password'] ?></td>
-        </tr>
-    <?php endforeach ?>
-    </tbody>
-</table>
-<br /><br />
-<a href="/save_row/">[Create new]</a>
-
-<?php
-echo "<pre>";
-print_r($users);
-echo "</pre>";
-
-$conn->close_connection();
-?>
+<?php require_once('assets/html/footer.php') ?>

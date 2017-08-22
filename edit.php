@@ -49,7 +49,7 @@ if ($id){
         <tr>
             <td colspan="2">
                 <input type="submit" value="Submit" />
-                <a href="connect_database/index.php">[ Cancel ]
+                <a href="databases/connect_database/index.php">[ Cancel ]
             </td>
         </tr>
         <input type="hidden" name="action" id="action" value="post" />
