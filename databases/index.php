@@ -42,6 +42,19 @@
                             </div>
                         </td>
                     </tr>
+                    <tr>
+                        <td>3</td>
+                        <td>
+                            <a target="_blank" href="save_row">
+                                Save user information
+                            </a>
+                        </td>
+                        <td>
+                            <div class="btn-group">
+                                <?php require_once('save_row/menu.php') ?>
+                            </div>
+                        </td>
+                    </tr>
                     </tbody>
                 </table>
             </div>

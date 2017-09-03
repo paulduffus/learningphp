@@ -62,9 +62,7 @@ while($row = $result->fetch_assoc()) {
                         <tr>
                             <td><?php echo $user['id'] ?></td>
                             <td>
-                                <a href="../../save_row?id=<?php echo $user['id'] ?>">
-                                    <?php echo $user['name'] ?>
-                                </a>
+                                <?php echo $user['name'] ?>
                             </td>
                             <td><?php echo $user['username'] ?></td>
                             <td><?php echo $user['email'] ?></td>
