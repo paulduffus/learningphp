@@ -58,35 +58,22 @@ require_once('../../assets/html/header.php'); ?>
                                 <code data-language="php">
 require_once('connect_database.php');
 
-use Symfony\Component\HttpFoundation\Request;
-
-$request = Request::createFromGlobals();
-
-$creds = array(
-    'host' => 'localhost',
-    'user' => 'root',
-    'password' => 'root',
-    'db' => 'sites_php'
-);
-
-$conn = new connect_database($creds);
+$conn = new connect_database();
 
 $user = array( 'id' => '', 'name' => '', 'username' => '', 'email' => '', 'password' =>'');
 
-$id = (int) $request->query->filter('id', '', FILTER_SANITIZE_NUMBER_INT);
-$action = (string) $request->request->filter('action', '');
-
 if ($id){
-    $user = current($conn->query_db("SELECT * FROM `users` WHERE `id` = '$id'"));
+    $user = current($conn->fetchRows("SELECT * FROM `users` WHERE `id` = '" . $id ."';"));
 }
                                 </code>
                             </pre>
-                            <p>We use an array called <code data-language="php">$creds = array()</code> to pass in our database credentials to our database class
-                            <code data-language="php">$conn = new connect_database($creds);</code></p>
+                            <p>We connect into the database with <code data-language="php">$conn = new connect_database</code></p>
                             <p>We create an empty user array <code data-language="php">$user = array( 'id' => '', 'name' => '', 'username' => '', 'email' => '', 'password' =>'');</code>, this
                             simple means if the user is creating a new record, rather than updating a new record we won't get any errors. Should the user be editing a record
                             then you can see the array is updated <code data-language="php">$user = current($conn->query_db("SELECT * FROM `users` WHERE `id` = '$id'"));</code> with the information
                             brought back from the database.</p>
+
+                            <h3 id="secure_request">Securing accessing Global Objects</h3>
                             <p>What you won't have seen before is
                             <pre><code data-language="php">use Symfony\Component\HttpFoundation\Request;</code></pre>
                             This is where we bring a third party library to filer and make information received from the user safe.
@@ -100,6 +87,49 @@ $action = (string) $request->request->filter('action', '');
                             And here you can see we safely access the user information. For get requests we look to the query and specify that the variable id and it should be filtered as an INTeger data type<br/>
                             Where as for action we go to the request and filter action as a string variable
                             </p>
+
+                            <h3 id="building_ux">Building the User Interface</h3>
+                            <p>Here you will add information about building the ux to capture user information</p>
+
+                            <h3 id="saving_db">Saving to the database</h3>
+                            <p>So now that the user has provided some changes we need to store this back to the database: </p>
+                            <pre>
+                                <code data-language="php">
+
+if (strlen($action) && $action == 'post')
+{
+
+    //lets determine if this a new record or not for later use
+    $isNew = ($id == 0);
+
+    //first of all lets get filtered user information
+    $name = $request->request->filter('name', '');
+    $username = $request->request->filter('username', '');
+    $email = $request->request->filter('email','');
+    $password = $request->request->filter('password', '');
+
+    //next up lets render it safe to store in the database
+    $name = $conn->escape($name);
+    $username = $conn->escape($username);
+    $email = $conn->escape($email);
+    $password = $conn->escape($password);
+
+    //but we want to do more with a password at the very minimum MD5
+    $password = md5($password);
+
+    //next we will need to determine whether to insert a new row or update an existing one
+    if ($isNew) {
+        $sql = "INSERT INTO `users` (`name`, `username`, `email`, `password`) VALUES('$name', '$email', '$username', '$password')";
+    } else {
+        $sql = "UPDATE `users` SET `name` = '$name', `email` = '$email', `username` = '$username', `password` = '$password' WHERE `id` = '$id'";
+    }
+
+    $conn->query($sql);
+
+    $conn->close_connection();
+}
+                                </code>
+                            </pre>
                         </div>
                         <div role="tabpanel" class="tab-pane" id="further-reading">
                             <div class="margin-top">

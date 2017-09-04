@@ -10,14 +10,7 @@ use Symfony\Component\HttpFoundation\Request;
 
 $request = Request::createFromGlobals();
 
-$creds = array(
-    'host' => 'localhost',
-    'user' => 'root',
-    'password' => 'root',
-    'db' => 'sites_php'
-);
-
-$conn = new connect_database($creds);
+$conn = new connect_database();
 
 $user = array( 'id' => '', 'name' => '', 'username' => '', 'email' => '', 'password' =>'');
 
@@ -25,7 +18,7 @@ $id = (int) $request->query->filter('id', '', FILTER_SANITIZE_NUMBER_INT);
 $action = (string) $request->request->filter('action', '');
 
 if ($id){
-    $user = current($conn->query_db("SELECT * FROM `users` WHERE `id` = '$id'"));
+    $user = current($conn->fetchRows("SELECT * FROM `users` WHERE `id` = '" . $id ."';"));
 }
 ?>
 
@@ -108,8 +101,5 @@ if (strlen($action) && $action == 'post')
     $conn->query($sql);
 
     $conn->close_connection();
-
-    header("Location: /save_row/index.php");
-    die();
 }
 
