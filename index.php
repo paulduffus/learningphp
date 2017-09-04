@@ -58,6 +58,19 @@
                             </div>
                         </td>
                     </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>
+                            <a target="_blank" href="/databases/mvc">
+                                Model, View, Controller
+                            </a>
+                        </td>
+                        <td>
+                            <div class="btn-group">
+                                <?php require_once('databases/mvc/menu.php') ?>
+                            </div>
+                        </td>
+                    </tr>
                     </tbody>
                 </table>
             </div>

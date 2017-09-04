@@ -1,7 +1,15 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: paulyiend
- * Date: 03/09/2017
- * Time: 09:56
- */
+require_once('../../../vendor/autoload.php');
+
+include('controller/controller.php');
+
+use Symfony\Component\HttpFoundation\Request;
+
+$request = Request::createFromGlobals();
+
+$method = $request->getMethod();
+
+$controller = new Controller(array('request' => $request));
+$controller->execute($method);
+
+?>
