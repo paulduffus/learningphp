@@ -8,13 +8,19 @@ $request = Request::createFromGlobals();
 
 $programme  = $request->query->filter('programme', '');
 $tutorial   = $request->query->filter('tutorial', '');
+$testing    = $request->query->filter('testing', '');
 
 $tutorial = str_replace('.', '/', $tutorial);
 
+$filename = __DIR__ . "/launch.command";
+
+if ($testing){
+    $filename = __DIR__ . "/../launch.command";
+}
+
 if($programme && $tutorial)
 {
-    $myfile = fopen(__DIR__ . "/launch.command", "w") or die("Unable to open file!");
-
+    $myfile = fopen($filename, "w") or die("Unable to open file!");
 
     $txt = <<<EOT
 #!/usr/bin/env bash
@@ -26,6 +32,7 @@ EOT;
     fwrite($myfile, $txt);
     fclose($myfile);
 
-    echo "<h1>Congraulations $programme shortly will launch shortly";
+    //sleep for 5 seconds
+    sleep(5);
 }
 

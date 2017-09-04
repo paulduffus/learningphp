@@ -46,7 +46,7 @@ class Controller {
     {
         $this->model->actionSave();
 
-        header("Location: /mvc");
+        header("Location: /databases/mvc/example.php");
     }
 
     /**
