@@ -1,4 +1,4 @@
 <?php
 
-require_once(_DIR_ . '/../connect_database.php');
+require_once('connect_database.php');
 
