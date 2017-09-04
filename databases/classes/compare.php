@@ -24,11 +24,10 @@ require_once('connect_database.php');
 
 <?php
 
-$example_class = file_get_contents('connect_database.php');
-$your_class = file_get_contents('DIY/connect_database.php');
 
-$starting_class = file_get_contents('using_connection.php');
-$your_starting_class = file_get_contents('DIY/using_connection.php');
+$your_attempt = file_get_contents('DIY/index.php');
+
+$example = file_get_contents('using_connection.php');
 
 ?>
 
@@ -57,7 +56,7 @@ $your_starting_class = file_get_contents('DIY/using_connection.php');
 <div id="xcompare-1" class="hidden">
     <pre>
         <code>
-                <?php echo $example_class ?>
+                <?php echo $example ?>
         </code>
     </pre>
 
@@ -66,7 +65,7 @@ $your_starting_class = file_get_contents('DIY/using_connection.php');
 <div id="xcompare-2" class="hidden">
     <pre>
         <code>
-                <?php echo $your_class ?>
+                <?php echo $your_attempt ?>
         </code>
     </pre>
 
