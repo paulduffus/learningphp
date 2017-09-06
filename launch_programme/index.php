@@ -25,8 +25,16 @@ if($programme && $tutorial)
     $txt = <<<EOT
 #!/usr/bin/env bash
 
+cp ~/Sites/joomlatools-vagrant/www/learningphp/composer.json ~/Sites/joomlatools-vagrant/www/diy.learningphp/composer.json;
 
-open -a '$programme.app' ~/Sites/joomlatools-vagrant/www/learningphp/$tutorial/DIY/index.php
+mkdir -p ~/Sites/joomlatools-vagrant/www/diy.learningphp/$tutorial/ && cp -R ~/Sites/joomlatools-vagrant/www/learningphp/$tutorial/DIY/  ~/Sites/joomlatools-vagrant/www/diy.learningphp/$tutorial/;
+
+open -a '$programme.app' ~/Sites/joomlatools-vagrant/www/diy.learningphp/$tutorial/;
+
+cd ~/Sites/joomlatools-vagrant/www/diy.learningphp/; 
+
+composer update;
+
 EOT;
 
     fwrite($myfile, $txt);
