@@ -25,13 +25,13 @@ if($programme && $tutorial)
     $txt = <<<EOT
 #!/usr/bin/env bash
 
-cp ~/Sites/joomlatools-vagrant/www/learningphp/composer.json ~/Sites/joomlatools-vagrant/www/diy.learningphp/composer.json;
+cp ~/Sites/joomlatools-vagrant/www/learningphp/composer.json ~/Sites/joomlatools-vagrant/www/do-it-yourself/composer.json;
 
-mkdir -p ~/Sites/joomlatools-vagrant/www/diy.learningphp/$tutorial/ && cp -R ~/Sites/joomlatools-vagrant/www/learningphp/$tutorial/DIY/  ~/Sites/joomlatools-vagrant/www/diy.learningphp/$tutorial/;
+mkdir -p ~/Sites/joomlatools-vagrant/www/do-it-yourself/$tutorial/ && cp -R ~/Sites/joomlatools-vagrant/www/learningphp/$tutorial/DIY/  ~/Sites/joomlatools-vagrant/www/do-it-yourself/$tutorial/;
 
-open -a '$programme.app' ~/Sites/joomlatools-vagrant/www/diy.learningphp/$tutorial/;
+open -a '$programme.app' ~/Sites/joomlatools-vagrant/www/do-it-yourself/$tutorial/;
 
-cd ~/Sites/joomlatools-vagrant/www/diy.learningphp/; 
+cd ~/Sites/joomlatools-vagrant/www/do-it-yourself/; 
 
 composer update;
 
