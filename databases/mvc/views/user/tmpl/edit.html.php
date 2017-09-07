@@ -4,12 +4,9 @@
 
 <?php require_once(__DIR__ . '/../../../tutorial-navigation.php') ?>
 
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-sm-3 col-md-2 sidebar">
-            <?php require_once('../../assets/html/sidebar.php') ?>
-        </div>
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" style="margin-top: 50px">
+
+<?php require_once('../../assets/html/body.php') ?>
+
             <form name="save-user" id="save-user" action="/databases/mvc/example.php?id=<?php echo $user['id'] ?>" class="form-horizontal" method="post">
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">Name</label>
@@ -42,8 +39,6 @@
                     </div>
                 </div>
             </form>
-        </div>
-    </div>
-</div>
+
 
 <?php require_once('../../assets/html/footer.php'); ?>

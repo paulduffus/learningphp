@@ -1,8 +1,10 @@
 <?php require_once('../../assets/html/header.php'); ?>
 
-<?php $users = $this->users ?>
+<?php require_once(__DIR__ . '/../../../tutorial-navigation.php') ?>
 
-<script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+<?php require_once('../../assets/html/body.php') ?>
+
+<?php $users = $this->users ?>
 
 <script type="text/javascript">
     $( document ).ready(function() {
@@ -19,14 +21,6 @@
     });
 </script>
 
-<?php require_once(__DIR__ . '/../../../tutorial-navigation.php') ?>
-
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-sm-3 col-md-2 sidebar">
-            <?php require_once('../../assets/html/sidebar.php') ?>
-        </div>
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" style="margin-top: 50px">
             <table class="table table-striped table-dashboard">
                 <thead>
                 <tr>
@@ -61,8 +55,5 @@
             </table>
             <br /><br />
             <a href="example.php?view=user">[Create new]</a>
-        </div>
-    </div>
-</div>
 
 <?php require_once('../../assets/html/footer.php'); ?>
