@@ -24,12 +24,8 @@ if ($id){
 
 <?php require_once('tutorial-navigation.php') ?>
 
-<div class="container-fluid margin-top">
-    <div class="row">
-        <div class="col-sm-3 col-md-2 sidebar">
-        <?php require_once('../../assets/html/sidebar.php') ?>
-        </div>
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+<?php require_once('../../assets/html/body.php') ?>
+
             <form name="save-user" id="save-user" action="" class="form-horizontal" method="post">
                 <div class="form-group">
                     <label for="inputEmail3" class="col-sm-2 control-label">Name</label>
@@ -62,9 +58,6 @@ if ($id){
                     </div>
                 </div>
             </form>
-        <div>
-    </div>
-</div>
 
 <?php
 
