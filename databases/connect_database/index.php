@@ -1,21 +1,9 @@
-<?php
+<?php require_once('../../assets/html/header.php'); ?>
 
-require_once('../../assets/html/header.php'); ?>
+<?php require_once('tutorial-navigation.php') ?>
 
-    <link href="/assets/css/rainbow-code/themes/css/github.css" rel="stylesheet">
+<?php require_once('../../assets/html/body.php') ?>
 
-    <script src="/assets/javascript/rainbow-code/dist/rainbow.js"></script>
-    <script src="/assets/javascript/rainbow-code/src/language/generic.js"></script>
-    <script src="/assets/javascript/rainbow-code/src/language/php.js"></script>
-
-    <?php require_once('tutorial-navigation.php') ?>
-
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-sm-3 col-md-2 sidebar">
-                <?php require_once('../../assets/html/sidebar.php') ?>
-            </div>
-            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" style="margin-top: 50px">
                 <div>
                     <!-- Nav tabs -->
                     <ul class="nav nav-tabs" role="tablist">
@@ -191,9 +179,6 @@ while($row = $result->fetch_assoc()) {
 
                     </div>
                 </div>
-            </div>
-        </div>
-    </div>
 
 
 <?php require_once('../../assets/html/footer.php'); ?>

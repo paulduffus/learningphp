@@ -16,6 +16,8 @@
     <!-- Custom styles for the dashboard -->
     <link href="/assets/css/dashboard.css" rel="stylesheet">
 
+    <link href="/assets/css/rainbow-code/themes/css/github.css" rel="stylesheet">
+
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
     <script src="/assets/javascripts/ie10-viewport-bug-workaround.js"></script>
 
@@ -27,6 +29,9 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="/assets/javascript/jquery.validate.min.js"></script>
     <script src="/assets/javascript/bootstrap.js"></script>
+    <script src="/assets/javascript/rainbow-code/dist/rainbow.js"></script>
+    <script src="/assets/javascript/rainbow-code/src/language/generic.js"></script>
+    <script src="/assets/javascript/rainbow-code/src/language/php.js"></script>
 </head>
 
 <body>
