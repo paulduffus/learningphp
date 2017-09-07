@@ -71,6 +71,19 @@
                             </div>
                         </td>
                     </tr>
+                    <tr>
+                        <td>4</td>
+                        <td>
+                            <a target="_blank" href="/php/send_email">
+                                Send email
+                            </a>
+                        </td>
+                        <td>
+                            <div class="btn-group">
+                                <?php require_once('php/send_email/menu.php') ?>
+                            </div>
+                        </td>
+                    </tr>
                     </tbody>
                 </table>
             </div>

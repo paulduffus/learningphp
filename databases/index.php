@@ -1,5 +1,8 @@
 <?php require_once('../assets/html/header.php') ?>
 
+
+<?php require_once('tutorial-navigation.php') ?>
+
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
