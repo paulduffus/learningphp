@@ -3,14 +3,14 @@
 </ul>
 <ul class="nav nav-sidebar">
     <li role="presentation" class="dropdown-header">Tools</li>
-    <li><a href="http://phpmyadmin.joomla.box/">phpMyAdmin</a></li>
-    <li><a href="/mailcatcher">MailCatcher</a></li>
-    <li><a href="http://webgrind.joomla.box">Webgrind</a></li>
+    <li><a href="http://phpmyadmin.joomla.box/" target="_blank">phpMyAdmin</a></li>
+    <li><a href="http://joomla.box:1080" target="_blank">MailCatcher</a></li>
+    <li><a href="http://webgrind.joomla.box" target="_blank">Webgrind</a></li>
 </ul>
 <ul class="nav nav-sidebar">
     <li role="presentation" class="dropdown-header">System</li>
-    <li><a href="http://joomla.box/phpinfo">phpinfo</a></li>
-    <li><a href="http://joomla.box/pimpmylog">Log Files</a></li>
-    <li><a href="http://joomla.box/filebrowser">File Browser</a></li>
-    <li><a href="http://joomla.box/terminal">Terminal</a></li>
+    <li><a href="http://joomla.box/phpinfo" target="_blank">phpinfo</a></li>
+    <li><a href="http://joomla.box/pimpmylog" target="_blank">Log Files</a></li>
+    <li><a href="http://joomla.box/filebrowser" target="_blank">File Browser</a></li>
+    <li><a href="http://joomla.box/terminal" target="_blank">Terminal</a></li>
 </ul>
