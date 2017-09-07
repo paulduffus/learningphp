@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div class="container-fluid" id="content-area">
     <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
             <?php require_once('sidebar.php') ?>

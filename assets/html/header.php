@@ -16,6 +16,8 @@
     <!-- Custom styles for the dashboard -->
     <link href="/assets/css/dashboard.css" rel="stylesheet">
 
+    <link href="/assets/css/shame.css" rel="stylesheet">
+
     <link href="/assets/css/rainbow-code/themes/css/github.css" rel="stylesheet">
 
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
