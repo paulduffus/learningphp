@@ -6,7 +6,7 @@
             </div>
             <ul class="breadcrumb">
                 <li><a href="/">Home</a></li>
-                <li><a href="#">PHP</a></li>
+                <li><a href="/php">PHP</a></li>
                 <li><a href="/databases/">Databases</a></li>
                 <li class="active"><a href="/databases/save_row">Save information to the database</a></li>
             </ul>
