@@ -1,6 +1,5 @@
 <?php require_once('assets/html/header.php') ?>
 
-<?php require_once('assets/html/body.php') ?>
             <div class="table-responsive">
                 <fieldset>
                     <legend>PHP</legend>

@@ -1,10 +1,8 @@
-<?php require_once('../../assets/html/header.php'); ?>
-
 <?php require_once('tutorial-navigation.php') ?>
 
-<?php require_once('../../assets/html/body.php') ?>
+<?php require_once('../../assets/html/header.php'); ?>
 
-                <div>
+                <div id="tutorial-content">
                     <!-- Nav tabs -->
                     <ul class="nav nav-tabs" role="tablist">
                         <li role="presentation" class="active">

@@ -1,6 +1,7 @@
 {
     "require": {
         "symfony/http-foundation": "^3.3",
-        "swiftmailer/swiftmailer": "^5.4"
+        "swiftmailer/swiftmailer": "^5.4",
+        "querypath/QueryPath": "^3.0"
     }
 }

@@ -4,8 +4,6 @@
 
 require_once('../../assets/html/header.php');
 
-require_once('../../assets/html/body.php');
-
 /**
  * Way to connect to the database and bring back an array of users for example
  */

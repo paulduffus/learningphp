@@ -1,11 +1,6 @@
-<?php
-
-require_once('../../assets/html/header.php'); ?>
-
 <?php require_once('tutorial-navigation.php') ?>
 
-<?php require_once('../../assets/html/body.php') ?>
-
+<?php require_once('../../assets/html/header.php'); ?>
 
                 <div>
                     <!-- Nav tabs -->

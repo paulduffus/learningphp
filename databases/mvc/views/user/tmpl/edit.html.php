@@ -1,10 +1,8 @@
 <?php require_once('../../assets/html/header.php'); ?>
 
-<?php $user = $this->user ?>
-
 <?php require_once(__DIR__ . '/../../../tutorial-navigation.php') ?>
 
-<?php require_once('../../assets/html/body.php') ?>
+<?php $user = $this->user ?>
 
             <form name="save-user" id="save-user" action="/databases/mvc/example.php?id=<?php echo $user['id'] ?>" class="form-horizontal" method="post">
                 <div class="form-group">

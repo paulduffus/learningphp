@@ -2,7 +2,6 @@
 
 <?php require_once(__DIR__ . '/../../../tutorial-navigation.php') ?>
 
-<?php require_once('../../assets/html/body.php') ?>
 
 <?php $users = $this->users ?>
 

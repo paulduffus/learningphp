@@ -1,8 +1,10 @@
-<?php
+<?php require_once('../../vendor/autoload.php');?>
 
-require_once('../../assets/html/header.php');
+<?php use Masterminds\HTML5; ?>
 
-?>
+<?php require_once('tutorial-navigation.php') ?>
+
+<?php  require_once('../../assets/html/header.php'); ?>
 
 <link type="text/css" rel="stylesheet" href="../../../assets/css/codemirror.css" />
 <link type="text/css" rel="stylesheet" href="../../../assets/css/mergely.css" />
@@ -11,7 +13,6 @@ require_once('../../assets/html/header.php');
 <script type="text/javascript" src="../../../assets/javascript/codemirror.min.js"></script>
 <script type="text/javascript" src="../../../assets/javascript/mergely.js"></script>
 
-<?php require_once('tutorial-navigation.php') ?>
 
 <div class="container-fluid">
     <div class="row">
@@ -25,6 +26,15 @@ require_once('../../assets/html/header.php');
 
 $html = file_get_contents('example.php');
 $html2 = file_get_contents('DIY/index.php');
+
+$html5 = new HTML5();
+$dom   = $html5->loadHTML($html);
+
+$example = qp($dom, 'html')->find('section#tutorial');
+
+$dom = $html5->loadHTML($html2);
+
+$diy = qp($dom, 'html')->find('section#tutorial');
 ?>
 
 
@@ -36,29 +46,37 @@ $html2 = file_get_contents('DIY/index.php');
 
 <script type="text/javascript">
     $(document).ready(function () {
+
+        $('.sidebar').toggle();
+
+        $('.col-sm-9.col-sm-offset-3.col-md-10.col-md-offset-2.main').removeClass();
+
         $('#compare').mergely({
             editor_height: '700px',
+            editor_width: '750px',
             cmsettings: { readOnly: false, lineNumbers: true },
             lhs: function(setValue) {
-                setValue(jQuery('#xcompare-1').html());
+                setValue(jQuery('#compare-2').html());
             },
             rhs: function(setValue) {
-                setValue(jQuery('#xcompare-2').html());
+
+
+                setValue(jQuery('#compare-1').html());
             }
         });
     });
 </script>
 
-<div id="xcompare-1" class="hidden">
+<div class="hidden">
     <pre>
-        <code><?php echo $html ?></code>
+        <code id="compare-1" data-language="php"><?php echo $example->html() ?></code>
     </pre>
 
 </div>
 
-<div id="xcompare-2" class="hidden">
+<div class="hidden">
     <pre>
-        <code><?php echo $html2 ?></code>
+        <code id="compare-2"  data-language="php"><?php echo $diy->html() ?></code>
     </pre>
 
 </div>
