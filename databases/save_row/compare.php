@@ -6,12 +6,11 @@
 
 <?php  require_once('../../assets/html/header.php'); ?>
 
-<link type="text/css" rel="stylesheet" href="../../../assets/css/codemirror.css" />
-<link type="text/css" rel="stylesheet" href="../../../assets/css/mergely.css" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/codemirror.css" />
+<link type="text/css" rel="stylesheet" href="../../assets/css/mergely.css" />
 
-<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
-<script type="text/javascript" src="../../../assets/javascript/codemirror.min.js"></script>
-<script type="text/javascript" src="../../../assets/javascript/mergely.js"></script>
+<script type="text/javascript" src="../../assets/javascript/codemirror.min.js"></script>
+<script type="text/javascript" src="../../assets/javascript/mergely.js"></script>
 
 
 <div class="container-fluid">
@@ -59,8 +58,6 @@ $diy = qp($dom, 'html')->find('section#tutorial');
                 setValue(jQuery('#compare-2').html());
             },
             rhs: function(setValue) {
-
-
                 setValue(jQuery('#compare-1').html());
             }
         });
@@ -71,12 +68,10 @@ $diy = qp($dom, 'html')->find('section#tutorial');
     <pre>
         <code id="compare-1" data-language="php"><?php echo $example->html() ?></code>
     </pre>
-
 </div>
 
 <div class="hidden">
     <pre>
         <code id="compare-2"  data-language="php"><?php echo $diy->html() ?></code>
     </pre>
-
 </div>
