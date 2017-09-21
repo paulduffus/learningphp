@@ -35,25 +35,21 @@ $action = (string) $request->request->filter('action', '');
             <div class="table-responsive">
                 <?php
                 if ($action == 'post'):
-                    $name       = $request->request->filter('name', '');
-                    $email      = $request->request->filter('email', '');
-                    $message    = $request->request->filter('message','');
+                    $name  = $request->request->filter('name', '');
+                    $email = $request->request->filter('email','');
+                    $message = $request->request->filter('message','');
 
-                    // Create the Transport
                     $transport = Swift_SmtpTransport::newInstance("localhost", 1025);
 
-                    // Create the Mailer using your created Transport
                     $mailer = new Swift_Mailer($transport);
 
-                    // Create a message
                     $message = (new Swift_Message('Somebody has contacted you'))
-                    ->setFrom(['example@example.com' => 'Example sender'])
-                    ->setTo(['paulosduffus@gmail.com' => 'Paul Duffus'])
-                    ->setBody(htmlspecialchars($message));
+                        ->setFrom([$email => $name])
+                        ->setTo(['paulosduffus@gmail.com' => 'Paul Duffus'])
+                        ->setBody(htmlspecialchars($message));
 
-                    // Send the message
                     $result = $mailer->send($message);
-                   ?>
+                    ?>
 
                     <h1><a href="http://joomla.box:1080/" target="_blank">Check your email:</a></h1>
 
@@ -63,13 +59,13 @@ $action = (string) $request->request->filter('action', '');
                         <div class="form-group">
                             <label for="inputEmail3" class="col-sm-2 control-label">Name</label>
                             <div class="col-sm-10">
-                                <input type="text" name="name" id="name" class="form-control" required value="" placeholder="Let us know your name" />
+                                <input type="text" name="name" id="name" class="form-control" required value="" placeholder="Let us know your name"/>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+                            <label for="inputEmail3" class="col-sm-2 control-label">Email address</label>
                             <div class="col-sm-10">
-                                <input type="email" name="email" id="email" class="form-control" required value="" placeholder="Let us know your email address"/>
+                                <input type="text" name="email" id="email" class="form-control" required value="" placeholder="Let us know your email address"/>
                             </div>
                         </div>
                         <div class="form-group">
@@ -85,7 +81,6 @@ $action = (string) $request->request->filter('action', '');
                             </div>
                         </div>
                     </form>
-
                 <?php endif ?>
             </div>
         </div>
